@@ -174,12 +174,12 @@
         "demo.mp4",
 		"demo1.mp4"
       ],
-      "sizes": [],
+      "sizes": ["NA"],
       "colors": [
         "White"
       ],
       "description": "Indian Ceiling for Make in India Bicho design Make it heavy and better grip",
-      "pricing": {}
+      "pricing": 12
     }
   ]
 }
