@@ -14,6 +14,14 @@
 
   <main class="container">
     <h1>Product List</h1>
+
+    <div class="filters">
+      <select id="category-filter" aria-label="Filter by category">
+        <option value="">All Categories</option>
+      </select>
+      <input id="search-input" type="search" placeholder="Search by name..." aria-label="Search products by name">
+    </div>
+
     <div id="product-grid" class="grid"></div>
   </main>
 
