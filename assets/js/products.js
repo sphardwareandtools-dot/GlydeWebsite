@@ -86,9 +86,13 @@
       return;
     }
 
+    // Build product row (gallery + meta)
+    const row = document.createElement('div'); row.className = 'product-row';
+
     // Build carousel
     const mediaBase = `media/${product.folder}/`;
-    const carousel = document.createElement('div'); carousel.className='carousel';
+    const carouselWrap = document.createElement('div');
+    carouselWrap.className = 'carousel';
     const main = document.createElement('div'); main.className='carousel-main';
     const thumbs = document.createElement('div'); thumbs.className='thumbs';
     let currentIndex = 0;
@@ -96,19 +100,25 @@
     function renderMain(){
       const m = product.media && product.media[currentIndex];
       main.innerHTML = '';
-      if(!m) return;
+      if(!m){
+        const placeholder = document.createElement('div'); placeholder.style.height='260px'; placeholder.style.display='flex'; placeholder.style.alignItems='center'; placeholder.style.justifyContent='center'; placeholder.textContent='No media'; placeholder.style.color='#ccc'; main.appendChild(placeholder);
+        return;
+      }
       const ext = m.split('.').pop().toLowerCase();
       if(['mp4','webm','ogg'].includes(ext)){
         const v = document.createElement('video');
         v.controls = true;
         v.src = mediaBase + m;
+        v.style.maxWidth='100%';
         main.appendChild(v);
       } else {
         const img = document.createElement('img');
         img.src = mediaBase + m;
-        img.alt = product.name;
+        img.alt = product.name + (product.caption ? ' - ' + product.caption : '');
         main.appendChild(img);
       }
+      // mark selected thumb
+      Array.from(thumbs.children).forEach((t, i)=> t.classList.toggle('selected', i===currentIndex));
       const t = thumbs.children[currentIndex];
       if(t) t.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
     }
@@ -124,46 +134,52 @@
       thumbs.appendChild(t);
     });
 
-    carousel.appendChild(main);
-    carousel.appendChild(thumbs);
+    carouselWrap.appendChild(main);
+    carouselWrap.appendChild(thumbs);
 
-    // controls: title, description, size/color selects, price, contact
-    const meta = document.createElement('div');
-    meta.className = 'meta';
+    // Build meta panel
+    const meta = document.createElement('aside'); meta.className='meta';
+    const title = document.createElement('h2'); title.textContent = product.name;
+    const desc = document.createElement('p'); desc.className='description'; desc.textContent = product.description || '';
+    meta.appendChild(title);
+    meta.appendChild(desc);
+    if(product.caption){ const c = document.createElement('p'); c.className='caption'; c.textContent = product.caption; meta.appendChild(c); }
+
+    // size/color selectors
+    const specs = document.createElement('div'); specs.className='specs';
     const sizeSelect = document.createElement('select'); sizeSelect.className='select';
-    const colorSelect = document.createElement('select'); colorSelect.className='select';
     (product.sizes || []).forEach(s=>{ const o=document.createElement('option'); o.value=o.text=s; sizeSelect.appendChild(o);});
+    const colorSelect = document.createElement('select'); colorSelect.className='select';
     (product.colors || []).forEach(c=>{ const o=document.createElement('option'); o.value=o.text=c; colorSelect.appendChild(o);});
+    specs.appendChild(sizeSelect); specs.appendChild(colorSelect);
+    meta.appendChild(specs);
 
-    const priceBox = document.createElement('div'); priceBox.className='price';
+    // price box
+    const priceBox = document.createElement('div'); priceBox.className='price-box';
+    const priceLabel = document.createElement('div'); priceLabel.className='price-label';
+    const minP = computeMinPrice(product);
+    priceLabel.textContent = 'Price: ' + (minP ? formatCurrency(minP) : 'Contact');
+    const waBtn = document.createElement('a'); waBtn.className='btn-large'; waBtn.target='_blank'; waBtn.rel='noopener';
+    const msg = encodeURIComponent(`Hello, I'm interested in ${product.name} (ID:${product.id}). Please share details.`);
+    waBtn.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+    waBtn.textContent = 'Contact on WhatsApp';
+    priceBox.appendChild(priceLabel); priceBox.appendChild(waBtn);
+    meta.appendChild(priceBox);
+
+    // wire price updates
     function updatePrice(){
       const size = sizeSelect.value;
       const color = colorSelect.value;
       const p = (product.pricing && product.pricing[size] && product.pricing[size][color]) || null;
-      priceBox.textContent = p ? `Price: ${formatCurrency(p)}` : 'Contact for price';
+      priceLabel.textContent = p ? `Price: ${formatCurrency(p)}` : 'Price: Contact';
     }
     sizeSelect.addEventListener('change', updatePrice);
     colorSelect.addEventListener('change', updatePrice);
 
-    // WhatsApp button for this product
-    const waBtn = document.createElement('a');
-    waBtn.className = 'btn btn-whatsapp';
-    waBtn.target = '_blank';
-    waBtn.rel = 'noopener';
-    const msg = encodeURIComponent(`Hello, I'm interested in ${product.name} (ID:${product.id}). Please share details.`);
-    waBtn.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-    waBtn.textContent = 'Contact on WhatsApp';
-
-    meta.innerHTML = `<h2>${product.name}</h2><p class="description">${product.description}</p>`;
-    if(product.caption){ const c = document.createElement('p'); c.className='caption'; c.textContent = product.caption; meta.appendChild(c); }
-    meta.appendChild(sizeSelect);
-    meta.appendChild(colorSelect);
-    meta.appendChild(priceBox);
-    meta.appendChild(document.createElement('br'));
-    meta.appendChild(waBtn);
-
-    container.appendChild(carousel);
-    container.appendChild(meta);
+    // assemble
+    row.appendChild(carouselWrap);
+    row.appendChild(meta);
+    container.appendChild(row);
 
     renderMain();
     updatePrice();
