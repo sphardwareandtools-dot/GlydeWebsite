@@ -1,4 +1,5 @@
 {
+  "poster_caption": "GLYDE — Premium curtain tracks & accessories. Dealer enquiries: WhatsApp 81490 66661.",
   "products": [
     {
       "id": 1,
@@ -31,7 +32,8 @@
           "White": 135,
           "Silver": 150
         }
-      }
+      },
+      "caption": "E101-WHITE — Aluminum curtain track with runners and metal rings."
     },
     {
       "id": 2,
@@ -59,7 +61,8 @@
           "Ivory": 280,
           "White": 270
         }
-      }
+      },
+      "caption": "P101-WHITE — Heavy duty curtain track for larger curtains."
     }
   ]
 }
