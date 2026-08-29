@@ -17,7 +17,7 @@
     data.products.forEach(p=>{
       const card = document.createElement('article');
       card.className = 'card';
-      const thumb = p.media && p.media.length ? `media/${p.folder}/${p.media[0]}` : 'assets/images/poster.jpg';
+      const thumb = p.media && p.media.length ? `media/${p.folder}/${p.media[0]}` : 'assets/images/poster.png';
       const minPrice = computeMinPrice(p);
       card.innerHTML = `
         <a href="product.html?id=${p.id}">
@@ -113,6 +113,8 @@
     waBtn.textContent = 'Contact on WhatsApp';
 
     meta.innerHTML = `<h2>${product.name}</h2><p>${product.description}</p>`;
+    // add caption if present
+    if(product.caption){ const c = document.createElement('p'); c.className='caption'; c.textContent = product.caption; meta.appendChild(c); }
     meta.appendChild(sizeSelect);
     meta.appendChild(colorSelect);
     meta.appendChild(priceBox);
