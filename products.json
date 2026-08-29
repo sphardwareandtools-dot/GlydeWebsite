@@ -3,324 +3,183 @@
   "products": [
     {
       "id": 1,
-      "name": "E101 Aluminum Track",
+      "name": "E101 Economy MTrack",
       "category": "Tracks",
-      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
-      "folder": "e101",
-      "thumbnail_type": "image",
+      "folder": "E101",
       "media": [
-        "2.jpg",
+        "1.png",
+        "2.png",
         "demo.mp4",
-        "demo1.mp4"
+        "demo1.mp4",
+        "demo2.mp4",
+        "demo3.mp4"
       ],
       "sizes": [
         "7 Foot",
         "8 Foot",
-        "9 Foot"
-      ],
-      "colors": [
-        "Ivory",
-        "White",
-        "Silver"
-      ],
-      "pricing": {
-        "7 Foot": {
-          "Ivory": 100,
-          "White": 95,
-          "Silver": 110
-        },
-        "8 Foot": {
-          "Ivory": 120,
-          "White": 115,
-          "Silver": 130
-        },
-        "9 Foot": {
-          "Ivory": 140,
-          "White": 135,
-          "Silver": 150
-        }
-      },
-      "caption": "E101-WHITE — Aluminum curtain track with runners and metal rings."
-    },
-    {
-      "id": 2,
-      "name": "P101 Heavy Duty Track",
-      "category": "Eyelet Ring",
-      "description": "Heavy duty track for larger curtains and commercial installs.",
-      "folder": "p101",
-      "thumbnail_type": "image",
-      "media": [
-        "1.jpg",
-        "2.jpg"
-      ],
-      "sizes": [
         "10 Foot",
         "12 Foot",
         "15 Foot"
       ],
       "colors": [
-        "White",
-        "Ivory"
+        "Ivory",
+        "White"
       ],
+      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.\nWeight: 660Gram for 15foot.\nMade In India",
       "pricing": {
+        "7 Foot": {
+          "Ivory": 100,
+          "White": 95
+        },
+        "8 Foot": {
+          "Ivory": 120,
+          "White": 115
+        },
         "10 Foot": {
-          "Ivory": 200,
-          "White": 190
+          "Ivory": 140,
+          "White": 135
         },
         "12 Foot": {
-          "Ivory": 230,
-          "White": 220
+          "Ivory": 140,
+          "White": 135
         },
         "15 Foot": {
-          "Ivory": 280,
-          "White": 270
-        }
-      },
-      "caption": "P101-WHITE — Heavy duty curtain track for larger curtains."
-    },
-    {
-      "id": 1,
-      "name": "E101 Aluminum Track",
-      "category": "Tracks",
-      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
-      "folder": "e101",
-      "thumbnail_type": "image",
-      "media": [
-        "2.jpg",
-        "demo.mp4",
-        "demo1.mp4"
-      ],
-      "sizes": [
-        "7 Foot",
-        "8 Foot",
-        "9 Foot"
-      ],
-      "colors": [
-        "Ivory",
-        "White",
-        "Silver"
-      ],
-      "pricing": {
-        "7 Foot": {
-          "Ivory": 100,
-          "White": 95,
-          "Silver": 110
-        },
-        "8 Foot": {
-          "Ivory": 120,
-          "White": 115,
-          "Silver": 130
-        },
-        "9 Foot": {
           "Ivory": 140,
-          "White": 135,
-          "Silver": 150
-        }
-      },
-      "caption": "E101-WHITE — Aluminum curtain track with runners and metal rings."
-    },
-    {
-      "id": 1,
-      "name": "E101 Aluminum Track",
-      "category": "Tracks",
-      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
-      "folder": "e101",
-      "thumbnail_type": "image",
-      "media": [
-        "2.jpg",
-        "demo.mp4",
-        "demo1.mp4"
-      ],
-      "sizes": [
-        "7 Foot",
-        "8 Foot",
-        "9 Foot"
-      ],
-      "colors": [
-        "Ivory",
-        "White",
-        "Silver"
-      ],
-      "pricing": {
-        "7 Foot": {
-          "Ivory": 100,
-          "White": 95,
-          "Silver": 110
-        },
-        "8 Foot": {
-          "Ivory": 120,
-          "White": 115,
-          "Silver": 130
-        },
-        "9 Foot": {
-          "Ivory": 140,
-          "White": 135,
-          "Silver": 150
-        }
-      },
-      "caption": "E101-WHITE — Aluminum curtain track with runners and metal rings."
-    },
-    {
-      "id": 1,
-      "name": "E101 Aluminum Track",
-      "category": "Tracks",
-      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
-      "folder": "e101",
-      "thumbnail_type": "image",
-      "media": [
-        "2.jpg",
-        "demo.mp4",
-        "demo1.mp4"
-      ],
-      "sizes": [
-        "7 Foot",
-        "8 Foot",
-        "9 Foot"
-      ],
-      "colors": [
-        "Ivory",
-        "White",
-        "Silver"
-      ],
-      "pricing": {
-        "7 Foot": {
-          "Ivory": 100,
-          "White": 95,
-          "Silver": 110
-        },
-        "8 Foot": {
-          "Ivory": 120,
-          "White": 115,
-          "Silver": 130
-        },
-        "9 Foot": {
-          "Ivory": 140,
-          "White": 135,
-          "Silver": 150
-        }
-      },
-      "caption": "E101-WHITE — Aluminum curtain track with runners and metal rings."
-    },
-    {
-      "id": 1,
-      "name": "E101 Aluminum Track",
-      "category": "Tracks",
-      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
-      "folder": "e101",
-      "thumbnail_type": "image",
-      "media": [
-        "2.jpg",
-        "demo.mp4",
-        "demo1.mp4"
-      ],
-      "sizes": [
-        "7 Foot",
-        "8 Foot",
-        "9 Foot"
-      ],
-      "colors": [
-        "Ivory",
-        "White",
-        "Silver"
-      ],
-      "pricing": {
-        "7 Foot": {
-          "Ivory": 100,
-          "White": 95,
-          "Silver": 110
-        },
-        "8 Foot": {
-          "Ivory": 120,
-          "White": 115,
-          "Silver": 130
-        },
-        "9 Foot": {
-          "Ivory": 140,
-          "White": 135,
-          "Silver": 150
-        }
-      },
-      "caption": "E101-WHITE — Aluminum curtain track with runners and metal rings."
-    },
-    {
-      "id": 1,
-      "name": "E101 Aluminum Track",
-      "category": "Tracks",
-      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
-      "folder": "e101",
-      "thumbnail_type": "image",
-      "media": [
-        "2.jpg",
-        "demo.mp4",
-        "demo1.mp4"
-      ],
-      "sizes": [
-        "7 Foot",
-        "8 Foot",
-        "9 Foot"
-      ],
-      "colors": [
-        "Ivory",
-        "White",
-        "Silver"
-      ],
-      "pricing": {
-        "7 Foot": {
-          "Ivory": 100,
-          "White": 95,
-          "Silver": 110
-        },
-        "8 Foot": {
-          "Ivory": 120,
-          "White": 115,
-          "Silver": 130
-        },
-        "9 Foot": {
-          "Ivory": 140,
-          "White": 135,
-          "Silver": 150
-        }
-      },
-      "caption": "E101-WHITE — Aluminum curtain track with runners and metal rings."
-    },
-    {
-      "id": 1788009915731,
-      "name": "P101 vishal",
-      "category": "Tracks",
-      "folder": "P101",
-      "media": [
-        "2.jpg",
-        "demo.mp4",
-        "demo1.mp4"
-      ],
-      "sizes": [
-        "7 Foot",
-        "8 Foot",
-        "9 Foot"
-      ],
-      "colors": [
-        "Ivory",
-        "White",
-        "Silver"
-      ],
-      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
-      "pricing": {
-        "7 Foot": {
-          "Ivory": 100,
-          "White": 95,
-          "Silver": 110
-        },
-        "8 Foot": {
-          "Ivory": 120,
-          "White": 115,
-          "Silver": 130
-        },
-        "9 Foot": {
-          "Ivory": 140,
-          "White": 135,
-          "Silver": 150
+          "White": 135
         }
       }
+    },
+    {
+      "id": 1788011385282,
+      "name": "P101 Deluxe MTrack",
+      "category": "Tracks",
+      "folder": "P101_1788011385282",
+      "media": [
+        "1.png",
+        "demo.mp4"
+      ],
+      "sizes": [
+        "7 Foot",
+        "8 Foot",
+        "10 Foot",
+        "12 Foot",
+        "15 Foot"
+      ],
+      "colors": [
+        "White"
+      ],
+      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.\nWeight: 880Gram for 15foot.\nMade In India",
+      "pricing": {
+        "7 Foot": {
+          "White": 95
+        },
+        "8 Foot": {
+          "White": 115
+        },
+        "10 Foot": {
+          "White": 135
+        },
+        "12 Foot": {
+          "White": 135
+        },
+        "15 Foot": {
+          "White": 135
+        }
+      }
+    },
+    {
+      "id": 1788012925505,
+      "name": "P101 Economy MTrack",
+      "category": "Tracks",
+      "folder": "P101_1788011385282_1788012925505",
+      "media": [
+        "1.png",
+        "demo.mp4"
+      ],
+      "sizes": [
+        "7 Foot",
+        "8 Foot",
+        "10 Foot",
+        "12 Foot",
+        "15 Foot"
+      ],
+      "colors": [
+        "White"
+      ],
+      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.\nWeight: 770Gram for 15foot.\nMade In India",
+      "pricing": {
+        "7 Foot": {
+          "White": 95
+        },
+        "8 Foot": {
+          "White": 115
+        },
+        "10 Foot": {
+          "White": 135
+        },
+        "12 Foot": {
+          "White": 135
+        },
+        "15 Foot": {
+          "White": 135
+        }
+      }
+    },
+    {
+      "id": 1788012927298,
+      "name": "P101 Super Deluxe MTrack",
+      "category": "Tracks",
+      "folder": "P101_1788011385282_1788012925505_1788012927298",
+      "media": [
+        "1.png",
+        "demo.mp4"
+      ],
+      "sizes": [
+        "7 Foot",
+        "8 Foot",
+        "10 Foot",
+        "12 Foot",
+        "15 Foot"
+      ],
+      "colors": [
+        "White"
+      ],
+      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.\nWeight: 1Kg for 15foot.\nMade In India",
+      "pricing": {
+        "7 Foot": {
+          "White": 95
+        },
+        "8 Foot": {
+          "White": 115
+        },
+        "10 Foot": {
+          "White": 135
+        },
+        "12 Foot": {
+          "White": 135
+        },
+        "15 Foot": {
+          "White": 135
+        }
+      }
+    },
+	{
+      "id": 1788013099708,
+      "name": "23# Celing Bicho Design Mtrack",
+      "category": "Tracks",
+      "folder": "23BichoCeiling",
+      "media": [
+        "1.jpg",
+		   "2.jpg",
+        "demo.mp4",
+		"demo1.mp4"
+      ],
+      "sizes": [],
+      "colors": [
+        "White"
+      ],
+      "description": "Indian Ceiling for Make in India Bicho design Make it heavy and better grip",
+      "pricing": {}
     }
   ]
 }
