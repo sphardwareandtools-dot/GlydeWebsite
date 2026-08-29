@@ -76,7 +76,9 @@
     fSizes.value = (p.sizes || []).join(', ');
     fColors.value = (p.colors || []).join(', ');
     fDesc.value = p.description || '';
-    fPricing.value = p.pricing ? JSON.stringify(p.pricing) : '';
+    // Support both numeric and object pricing
+    if(typeof p.pricing === 'number') fPricing.value = String(p.pricing);
+    else fPricing.value = p.pricing ? JSON.stringify(p.pricing) : '';
     showNotice('Loaded product ' + p.name);
   }
 
@@ -88,6 +90,7 @@
   function saveFromForm(){
     // build product
     const id = Number(fId.value) || Date.now();
+    const pricingVal = parsePricing(fPricing.value.trim());
     const product = {
       id: id,
       name: fName.value.trim(),
@@ -97,7 +100,7 @@
       sizes: fSizes.value.trim() ? fSizes.value.split(',').map(s=>s.trim()).filter(Boolean) : [],
       colors: fColors.value.trim() ? fColors.value.split(',').map(s=>s.trim()).filter(Boolean) : [],
       description: fDesc.value.trim(),
-      pricing: parsePricing(fPricing.value.trim())
+      pricing: pricingVal
     };
 
     // replace or add
@@ -141,8 +144,10 @@
   }
 
   function parsePricing(value){
-    if(!value) return {};
-    try{ return JSON.parse(value); }catch(e){ showNotice('Invalid pricing JSON — saved empty pricing', true); return {}; }
+    if(value === '') return {};
+    // If it's a plain number, return number
+    if(/^\d+(?:\.\d+)?$/.test(value)) return Number(value);
+    try{ return JSON.parse(value); }catch(e){ showNotice('Invalid pricing — expected a number or JSON (saved empty pricing)', true); return {}; }
   }
 
   function showNotice(msg, isError){

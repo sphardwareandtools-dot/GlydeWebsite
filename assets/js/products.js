@@ -11,13 +11,44 @@
   function formatCurrency(n){ return "₹" + n; }
 
   // Utilities
+  // computePrice: returns numeric price for given product + optional size/color selection
+  function computePrice(product, size, color){
+    if(!product || product.pricing == null) return null;
+    // If pricing is a number (flat price for product)
+    if(typeof product.pricing === 'number') return product.pricing;
+    // If pricing is an object but directly maps sizes to numbers: { "Piece": 12 }
+    if(typeof product.pricing === 'object'){
+      // If size is provided and pricing[size] is a number, return it or try nested
+      if(size && product.pricing[size] != null){
+        const v = product.pricing[size];
+        if(typeof v === 'number') return v;
+        if(color && typeof v === 'object' && v[color] != null && typeof v[color] === 'number') return v[color];
+      }
+      // If the object itself contains direct numeric values (flattened), return the min numeric
+      const flatNumbers = [];
+      Object.values(product.pricing).forEach(val=>{
+        if(typeof val === 'number') flatNumbers.push(val);
+        else if(typeof val === 'object'){
+          Object.values(val).forEach(v2=>{ if(typeof v2 === 'number') flatNumbers.push(v2); });
+        }
+      });
+      if(flatNumbers.length) return Math.min(...flatNumbers);
+    }
+    return null;
+  }
+
+  // computeMinPrice: used in product listing to find a minimum price to display
   function computeMinPrice(product){
-    if(!product.pricing) return 0;
+    if(!product || product.pricing == null) return 0;
+    // If numeric pricing
+    if(typeof product.pricing === 'number') return product.pricing;
+    // If object: search for any numeric values inside
     let min = Infinity;
     Object.values(product.pricing).forEach(sizeObj=>{
-      Object.values(sizeObj).forEach(v=>{
-        if(typeof v === 'number') min = Math.min(min, v);
-      });
+      if(typeof sizeObj === 'number') min = Math.min(min, sizeObj);
+      else if(typeof sizeObj === 'object'){
+        Object.values(sizeObj).forEach(v=>{ if(typeof v === 'number') min = Math.min(min, v); });
+      }
     });
     return min === Infinity ? 0 : min;
   }
@@ -170,7 +201,7 @@
     function updatePrice(){
       const size = sizeSelect.value;
       const color = colorSelect.value;
-      const p = (product.pricing && product.pricing[size] && product.pricing[size][color]) || null;
+      const p = computePrice(product, size, color);
       priceLabel.textContent = p ? `Price: ${formatCurrency(p)}` : 'Price: Contact';
     }
     sizeSelect.addEventListener('change', updatePrice);
