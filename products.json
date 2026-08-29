@@ -163,23 +163,108 @@
         }
       }
     },
-	{
+    {
       "id": 1788013099708,
-      "name": "23# Celing Bicho Design Mtrack",
-      "category": "Tracks",
+      "name": "23# Celing Bicho Design Bracket",
+      "category": "Accessories",
       "folder": "23BichoCeiling",
       "media": [
         "1.jpg",
-		   "2.jpg",
+        "2.jpg",
         "demo.mp4",
-		"demo1.mp4"
+        "demo1.mp4"
       ],
-      "sizes": ["NA"],
+      "sizes": [
+        "NA"
+      ],
       "colors": [
         "White"
       ],
       "description": "Indian Ceiling for Make in India Bicho design Make it heavy and better grip",
       "pricing": 12
+    },
+    {
+      "id": 1788016356473,
+      "name": "23# Single Ceiling Bracket",
+      "category": "Accessories",
+      "folder": "23Ceiling_1788016356473",
+      "media": [
+        "1.png",
+        "2.jpg",
+        "3.jpg",
+        "demo.mp4",
+        "demo1.mp4"
+      ],
+      "sizes": [
+        "NA"
+      ],
+      "colors": [
+        "White"
+      ],
+      "description": "India Ceiling Custom Size for 23#Mtrack",
+      "pricing": 8
+    },
+    {
+      "id": 1788016472219,
+      "name": "23# Single WallBracket",
+      "category": "Accessories",
+      "folder": "23SingleWallCeiling_1788016356473_1788016472219",
+      "media": [
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "demo.mp4",
+        "demo1.mp4"
+      ],
+      "sizes": [
+        "NA"
+      ],
+      "colors": [
+        "White"
+      ],
+      "description": "Curtain Wall Bracket for 23# Curtain Mtrack",
+      "pricing": 20
+    },
+    {
+      "id": 1788016473424,
+      "name": "23# Double Ceiling Bracket",
+      "category": "Accessories",
+      "folder": "23DoubleCeiing_1788016356473_1788016473424",
+      "media": [
+        "1.jpg",
+        "2.jpg",
+        "demo.mp4",
+        "demo1.mp4"
+      ],
+      "sizes": [
+        "NA"
+      ],
+      "colors": [
+        "White"
+      ],
+      "description": "23# Double Ceiling Bracket for Mtrack",
+      "pricing": 30
+    },
+    {
+      "id": 1788016618758,
+      "name": "23# Double Wall Bracket",
+      "category": "Accessories",
+      "folder": "23DoubleWall_1788016356473_1788016473424_1788016618758",
+      "media": [
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "demo.mp4",
+        "demo1.mp4"
+      ],
+      "sizes": [
+        "NA"
+      ],
+      "colors": [
+        "White"
+      ],
+      "description": "23# Double Wall Bracket for Mtrack",
+      "pricing": 50
     }
   ]
 }
