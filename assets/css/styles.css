@@ -13,10 +13,13 @@
 *{box-sizing:border-box}
 body,html{height:100%;margin:0;color:#222;background:var(--bg);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
+/* Poster: use the --vh unit to avoid mobile viewport issues */
 .poster{
-  min-height:60vh;
+  min-height:calc(var(--vh, 1vh) * 100);
+  height:calc(var(--vh, 1vh) * 100);
   background-size:cover;
-  background-position:center;
+  background-position:center center;
+  background-repeat:no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -25,8 +28,16 @@ a{color:inherit;text-decoration:none}
 .poster-overlay{
   background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
   width:100%;
+  max-width:1200px;
   padding:40px 16px;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  max-height:100%;
+  overflow:auto;
 }
 .poster-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 .btn{display:inline-block;padding:12px 20px;border-radius:8px;font-weight:700;transition:transform .12s ease,box-shadow .12s ease}

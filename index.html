@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>GLYDE Curtain Tracks</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -20,5 +20,16 @@
       </div>
     </div>
   </main>
+
+  <script>
+    // Fix for mobile browsers where 100vh includes address bar — set CSS custom property --vh
+    (function(){
+      function setVh(){
+        document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+      }
+      setVh();
+      window.addEventListener('resize', setVh);
+    })();
+  </script>
 </body>
 </html>
