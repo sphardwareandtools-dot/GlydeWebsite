@@ -1,0 +1,65 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "E101 Aluminum Track",
+      "category": "Tracks",
+      "description": "Premium aluminum curtain track with smooth sliding operation. Ideal for residential use with elegant finish.",
+      "folder": "e101",
+      "thumbnail_type": "image",
+      "media": [
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "demo.mp4"
+      ],
+      "sizes": ["7 Foot", "8 Foot", "9 Foot"],
+      "colors": ["Ivory", "White", "Silver"],
+      "pricing": {
+        "7 Foot": {
+          "Ivory": 100,
+          "White": 95,
+          "Silver": 110
+        },
+        "8 Foot": {
+          "Ivory": 120,
+          "White": 115,
+          "Silver": 130
+        },
+        "9 Foot": {
+          "Ivory": 140,
+          "White": 135,
+          "Silver": 150
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "P101 Heavy Duty Track",
+      "category": "Tracks",
+      "description": "Heavy duty track for larger curtains and commercial installs.",
+      "folder": "p101",
+      "thumbnail_type": "image",
+      "media": [
+        "1.jpg",
+        "2.jpg"
+      ],
+      "sizes": ["10 Foot", "12 Foot", "15 Foot"],
+      "colors": ["White", "Ivory"],
+      "pricing": {
+        "10 Foot": {
+          "Ivory": 200,
+          "White": 190
+        },
+        "12 Foot": {
+          "Ivory": 230,
+          "White": 220
+        },
+        "15 Foot": {
+          "Ivory": 280,
+          "White": 270
+        }
+      }
+    }
+  ]
+}
