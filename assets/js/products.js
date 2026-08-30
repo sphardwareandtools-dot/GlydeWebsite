@@ -11,9 +11,38 @@
   function formatCurrency(n){ return "₹" + n; }
 
   // Utilities
-  function computeMinPrice(product){
-    if(!product.pricing) return 0;
+  // computePrice: returns numeric price for given product + optional size/color selection
+  function computePrice(product, size, color){
+    if(!product || product.pricing == null) return null;
+    // If pricing is a number (flat price for product)
     if(typeof product.pricing === 'number') return product.pricing;
+    // If pricing is an object but directly maps sizes to numbers: { "Piece": 12 }
+    if(typeof product.pricing === 'object'){
+      // If size is provided and pricing[size] is a number, return it or try nested
+      if(size && product.pricing[size] != null){
+        const v = product.pricing[size];
+        if(typeof v === 'number') return v;
+        if(color && typeof v === 'object' && v[color] != null && typeof v[color] === 'number') return v[color];
+      }
+      // If the object itself contains direct numeric values (flattened), return the min numeric
+      const flatNumbers = [];
+      Object.values(product.pricing).forEach(val=>{
+        if(typeof val === 'number') flatNumbers.push(val);
+        else if(typeof val === 'object'){
+          Object.values(val).forEach(v2=>{ if(typeof v2 === 'number') flatNumbers.push(v2); });
+        }
+      });
+      if(flatNumbers.length) return Math.min(...flatNumbers);
+    }
+    return null;
+  }
+
+  // computeMinPrice: used in product listing to find a minimum price to display
+  function computeMinPrice(product){
+    if(!product || product.pricing == null) return 0;
+    // If numeric pricing
+    if(typeof product.pricing === 'number') return product.pricing;
+    // If object: search for any numeric values inside
     let min = Infinity;
     Object.values(product.pricing).forEach(sizeObj=>{
       if(typeof sizeObj === 'number') min = Math.min(min, sizeObj);
@@ -45,51 +74,21 @@
   if(document.getElementById('product-grid')){
     const data = await loadJSON();
     const grid = document.getElementById('product-grid');
-    const categoryButtons = document.getElementById('category-buttons');
+    const categorySelect = document.getElementById('category-filter');
     const searchInput = document.getElementById('search-input');
 
-    // Build category list from products.json (unique, sorted)
+    // Build category list from products.json
     const categories = Array.from(new Set(data.products.map(p=>p.category))).filter(Boolean).sort();
-
-    // selected category state
-    let selectedCategory = '';
-
-    function buildCategoryButtons(){
-      categoryButtons.innerHTML = '';
-      // All button
-      const allBtn = document.createElement('button');
-      allBtn.type = 'button';
-      allBtn.className = 'category-btn active';
-      allBtn.textContent = 'All';
-      allBtn.dataset.category = '';
-      allBtn.addEventListener('click', ()=>{ selectCategory(''); });
-      categoryButtons.appendChild(allBtn);
-
-      categories.forEach(cat=>{
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'category-btn';
-        b.textContent = cat;
-        b.dataset.category = cat;
-        b.addEventListener('click', ()=>{ selectCategory(cat); });
-        categoryButtons.appendChild(b);
-      });
-    }
-
-    function selectCategory(cat){
-      selectedCategory = cat;
-      // update active classes
-      Array.from(categoryButtons.children).forEach(btn=>{
-        btn.classList.toggle('active', btn.dataset.category === cat);
-      });
-      renderProducts();
-    }
+    categories.forEach(cat=>{
+      const o = document.createElement('option'); o.value = cat; o.textContent = cat; categorySelect.appendChild(o);
+    });
 
     function renderProducts(){
+      const category = categorySelect.value.trim();
       const q = searchInput.value.trim().toLowerCase();
       grid.innerHTML = '';
       const filtered = data.products.filter(p=>{
-        if(selectedCategory && p.category !== selectedCategory) return false;
+        if(category && p.category !== category) return false;
         if(q && !p.name.toLowerCase().includes(q)) return false;
         return true;
       });
@@ -100,14 +99,13 @@
       filtered.forEach(p=> grid.appendChild(makeCard(p)));
     }
 
-    // wire events
-    buildCategoryButtons();
+    categorySelect.addEventListener('change', renderProducts);
     searchInput.addEventListener('input', renderProducts);
 
     renderProducts();
   }
 
-  // Product detail page (unchanged)
+  // Product detail page
   if(document.getElementById('product-container')){
     const params = new URLSearchParams(location.search);
     const id = Number(params.get('id'));
@@ -190,26 +188,6 @@
     // price box
     const priceBox = document.createElement('div'); priceBox.className='price-box';
     const priceLabel = document.createElement('div'); priceLabel.className='price-label';
-    function computePrice(product, size, color){
-      if(!product || product.pricing == null) return null;
-      if(typeof product.pricing === 'number') return product.pricing;
-      if(typeof product.pricing === 'object'){
-        if(size && product.pricing[size] != null){
-          const v = product.pricing[size];
-          if(typeof v === 'number') return v;
-          if(color && typeof v === 'object' && v[color] != null && typeof v[color] === 'number') return v[color];
-        }
-        const flatNumbers = [];
-        Object.values(product.pricing).forEach(val=>{
-          if(typeof val === 'number') flatNumbers.push(val);
-          else if(typeof val === 'object'){
-            Object.values(val).forEach(v2=>{ if(typeof v2 === 'number') flatNumbers.push(v2); });
-          }
-        });
-        if(flatNumbers.length) return Math.min(...flatNumbers);
-      }
-      return null;
-    }
     const minP = computeMinPrice(product);
     priceLabel.textContent = 'Price: ' + (minP ? formatCurrency(minP) : 'Contact');
     const waBtn = document.createElement('a'); waBtn.className='btn-large'; waBtn.target='_blank'; waBtn.rel='noopener';
